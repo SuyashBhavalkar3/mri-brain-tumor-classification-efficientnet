@@ -1,4 +1,5 @@
-from fastapi import FastAPI, UploadFile, File, Form
+from fastapi import FastAPI,UploadFile, File, Form
+import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from tensorflow.keras.models import load_model
@@ -14,7 +15,8 @@ app = FastAPI()
 # CORS for development (allow all origins)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://mri-brain-tumor-classification-effi.vercel.app/"],
+    allow_origins=["*",
+                "https://mri-brain-tumor-classification-effi.vercel.app/"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -105,3 +107,8 @@ async def predict(
 
     finally:
         os.remove(tmp_path)
+
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("drowsiness:app", host="0.0.0.0", port=port)
