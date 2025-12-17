@@ -14,7 +14,7 @@ app = FastAPI()
 # CORS for development (allow all origins)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["https://mri-brain-tumor-classification-effi.vercel.app/"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
