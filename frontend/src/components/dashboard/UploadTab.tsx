@@ -160,7 +160,7 @@ const handleUpload = async () => {
     formData.append("patient_id", selectedPatient);
     formData.append("doctor_id", user.id);
 
-    const response = await fetch("http://localhost:8000/predict", {
+    const response = await fetch("https://mri-brain-tumor-classification.onrender.com/predict", {
       method: "POST",
       body: formData,
     });
