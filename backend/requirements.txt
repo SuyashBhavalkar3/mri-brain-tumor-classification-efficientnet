@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+gunicorn
+python-multipart
+tensorflow==2.19.0
+keras==3.10.0
+numpy
+pillow
